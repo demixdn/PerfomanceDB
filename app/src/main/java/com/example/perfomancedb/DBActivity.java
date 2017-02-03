@@ -61,7 +61,7 @@ public class DBActivity extends AppCompatActivity {
                             + " P6 " + cursor.getString(cursor.getColumnIndex(FeedHelper.P6))
                             + " A6 " + cursor.getString(cursor.getColumnIndex(FeedHelper.A6))
                             + " I8 " + cursor.getString(cursor.getColumnIndex(FeedHelper.I8))
-                            + " C5 " + cursor.getString(cursor.getColumnIndex("С5"))
+                            + " C5 " + cursor.getString(cursor.getColumnIndex(FeedHelper.C5))
                             + " F " + cursor.getString(cursor.getColumnIndex(FeedHelper.F))
                             + " D8 " + cursor.getString(cursor.getColumnIndex(FeedHelper.D8))
                             + " H6 " + cursor.getString(cursor.getColumnIndex(FeedHelper.E6))
