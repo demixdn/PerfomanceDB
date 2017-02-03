@@ -10,7 +10,6 @@ import android.view.View;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-import static com.example.perfomancedb.FeedHelper.T;
 
 public class DBActivity extends AppCompatActivity {
 
@@ -35,14 +34,18 @@ public class DBActivity extends AppCompatActivity {
                 read();
                 break;
             case R.id.button6:
-                feedData.getWritableDatabase().delete("components", null, null);
-                feedData.close();
+                delete();
                 break;
         }
     }
 
+    private void delete() {
+        feedData.getWritableDatabase().delete(FeedHelper.TABLE, null, null);
+        feedData.close();
+    }
+
     private void read() {
-        Cursor cursor = feedData.getReadableDatabase().query("components", null, null, null, null, null, null, null);
+        Cursor cursor = feedData.getReadableDatabase().query(FeedHelper.TABLE, null, null, null, null, null, null, null);
 
         if (cursor != null) {
             if (cursor.moveToFirst()) {
@@ -105,7 +108,7 @@ public class DBActivity extends AppCompatActivity {
         contentValues.put(FeedHelper.N6, set_N6);
         contentValues.put(FeedHelper.U, set_U);
         contentValues.put(FeedHelper.G, set_G);
-        contentValues.put(T, set_T);
+        contentValues.put(FeedHelper.T, set_T);
         contentValues.put(FeedHelper.B4, set_B4);
         contentValues.put(FeedHelper.L6, set_L6);
         contentValues.put(FeedHelper.R6, set_R6);
@@ -124,7 +127,7 @@ public class DBActivity extends AppCompatActivity {
         contentValues.put(FeedHelper.t3, set_t3);
 
 
-        feedData.getWritableDatabase().insert("components", null, contentValues);
+        feedData.getWritableDatabase().insert(FeedHelper.TABLE, null, contentValues);
         Log.d("log", "Data inserted");
         feedData.close();
     }
